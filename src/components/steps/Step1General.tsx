@@ -43,6 +43,13 @@ export const Step1General: React.FC<Step1GeneralProps> = ({ ciclo, onChangeCiclo
     });
   };
 
+  const ramaDefaults: Record<RamaScout, string> = {
+    manada: 'Manada',
+    unidad: 'Unidad Scout',
+    caminantes: 'Comunidad Caminantes',
+    rovers: 'Comunidad Rover',
+  };
+
   return (
     <div className="space-y-6">
       {/* Encabezado del Paso */}
@@ -72,10 +79,7 @@ export const Step1General: React.FC<Step1GeneralProps> = ({ ciclo, onChangeCiclo
                   onChangeCiclo({
                     ...ciclo,
                     rama: r.id,
-                    nombreRama:
-                      ciclo.nombreRama && ciclo.nombreRama !== 'Unidad Scout' && ciclo.nombreRama !== 'Manada'
-                        ? ciclo.nombreRama
-                        : r.nombre.split(' ')[0],
+                    nombreRama: ramaDefaults[r.id],
                   })
                 }
                 className={`p-3.5 rounded-xl border-2 text-left transition-all ${
